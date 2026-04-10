@@ -2,7 +2,7 @@
 #define __PUBLIC_H__
 
 
-#define Version "v0.0.04.09a"
+#define Version "V0.0.04.10a"
 
 
 #define my_zlog_debug(zlog_flag_t, fmt, ...) 		do{zlog_debug(zlog_flag_t, "[%s] " fmt, Version, ##__VA_ARGS__);}while(0);
