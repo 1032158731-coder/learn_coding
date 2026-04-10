@@ -58,11 +58,19 @@ extern void WriteMsg(const MsgTypeEnum enType, const unsigned char *pMsg, const 
 
 
 static int g_current_log_level = LOG_DEBUG;  // 默认日志级别为 INFO
-#define log_debug(format, ...) do { if (g_current_log_level <= LOG_DEBUG) printf("[DEBUG] File: %s, Line: %d " format, __FILE__, __LINE__,##__VA_ARGS__); } while(0)
-#define log_info(format, ...) do { if (g_current_log_level <= LOG_INFO) printf("[INFO] File: %s, Line: %d " format, __FILE__, __LINE__,##__VA_ARGS__); } while(0)
-#define log_warning(format, ...) do { if (g_current_log_level <= LOG_WARNING) printf("[WARNING] File: %s, Line: %d " format, __FILE__, __LINE__,##__VA_ARGS__); } while(0)
-#define log_error(format, ...) do { if (g_current_log_level <= LOG_ERROR) printf("[ERROR] File: %s, Line: %d " format, __FILE__, __LINE__,##__VA_ARGS__); } while(0)
-#define log_critical(format, ...) do { if (g_current_log_level <= LOG_CRITICAL) printf("[CRITICAL] File: %s, Line: %d " format, __FILE__, __LINE__,##__VA_ARGS__); } while(0)
+
+#define COLOR_NONE      "\033[0m"
+#define COLOR_DEBUG     "\033[36m"   // 青色
+#define COLOR_INFO      "\033[32m"   // 绿色
+#define COLOR_WARNING   "\033[33m"   // 黄色
+#define COLOR_ERROR     "\033[31m"   // 红色
+#define COLOR_CRITICAL  "\033[41;37m" // 红底白字
+
+#define log_debug(format, ...) do { if (g_current_log_level <= LOG_DEBUG) printf(COLOR_DEBUG "[DEBUG] File: %s, Line: %d " format COLOR_NONE, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define log_info(format, ...) do { if (g_current_log_level <= LOG_INFO) printf(COLOR_INFO "[INFO] File: %s, Line: %d " format COLOR_NONE, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define log_warning(format, ...) do { if (g_current_log_level <= LOG_WARNING) printf(COLOR_WARNING "[WARNING] File: %s, Line: %d " format COLOR_NONE, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define log_error(format, ...) do { if (g_current_log_level <= LOG_ERROR) printf(COLOR_ERROR "[ERROR] File: %s, Line: %d " format COLOR_NONE, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define log_critical(format, ...) do { if (g_current_log_level <= LOG_CRITICAL) printf(COLOR_CRITICAL "[CRITICAL] File: %s, Line: %d " format COLOR_NONE, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
 
 
 #endif

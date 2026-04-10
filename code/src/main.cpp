@@ -2,7 +2,8 @@
 #include <fstream>
 #include <string>
 
-#include "json.hpp""
+#include "json.hpp"
+#include "public.h"
 
 using json = nlohmann::json;
 
@@ -66,6 +67,7 @@ int main() {
         std::cerr << "❌ 运行时错误: " << e.what() << std::endl;
         return 1;
     }
+    log_info("JSON 配置文件解析完成 \n");
 
     return 0;
 }
